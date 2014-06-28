@@ -10,17 +10,29 @@
                 success : function(parsed_json) {
                  var location = parsed_json['location']['city'];
                  var temp_f = parsed_json['current_observation']['temp_f'];
-                 var rain = parsed_json['current_obvervation']['precip_1hr_in'];
-               alert("Current temperature in " + location + " is: " + temp_f);
+                 var rain = parsed_json['current_observation']['precip_1hr_in'];
+            //   alert("Current temperature in " + location + " is: " + rain);
                  }
                 });
             });
 function refresh(t) {
+
   setTimeout("location.reload(true);", t);
 }
-    </script>
+var _yoData = {
+  "username": "RAINSF",
+  "trigger": "whenever it rains"
+              };
+var s = document.createElement("script");
+s.type = "text/javascript";
+s.src = "//yoapp.s3.amazonaws.com/js/yo-button.js";
+(document.head || document.getElementsByTagName("head")[0]).appendChild(s);
+
+</script>
 </head>
 <body onLoad="refresh(5000)">
-
+  <div id="yo-button"></div>
+  <p> hello </p>
+  <div id="purple"></div>
 </body>
 </html>
