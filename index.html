@@ -12,6 +12,14 @@
                  var temp_f = parsed_json['current_observation']['temp_f'];
                  var rain = parsed_json['current_observation']['precip_1hr_in'];
             //   alert("Current temperature in " + location + " is: " + rain);
+                 if (rain <= 0)
+                  $.ajax({
+                      type: "POST",
+                      url: "http://api.justyo.co/yoall/",
+                      data: "api-token=77cc1ef9-ecc0-fd62-7224-824a03dde611",
+                      success: function() { alert("Success"); },
+                      dataType: 'jsonp',
+                              });
                  }
                 });
             });
@@ -20,15 +28,15 @@ function refresh(t) {
   setTimeout("location.reload(true);", t);
 }
 var _yoData = {
-  "username": "RAINSF",
+  "username": "rainrainSF",
   "trigger": "whenever it rains"
               };
 var s = document.createElement("script");
 s.type = "text/javascript";
-s.src = "//yoapp.s3.amazonaws.com/js/yo-button.js";
+s.src = "http://yoapp.s3.amazonaws.com/js/yo-button.js";
 (document.head || document.getElementsByTagName("head")[0]).appendChild(s);
-
 </script>
+<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
 </head>
 <body onLoad="refresh(5000)">
   <div id="yo-button"></div>
