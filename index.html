@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-	<script src="yoweather.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/JavaScript">
+      jQuery(document).ready(function($) {
+            $.ajax({
+            url : "http://api.wunderground.com/api/e6c9bec25fa7b1cb/geolookup/conditions/q/CA/San_Francisco.json",
+              dataType : "jsonp",
+                success : function(parsed_json) {
+                 var location = parsed_json['location']['city'];
+                 var temp_f = parsed_json['current_observation']['temp_f'];
+                 var rain = parsed_json['current_obvervation']['precip_1hr_in'];
+               alert("Current temperature in " + location + " is: " + temp_f);
+                 }
+                });
+            });
+function refresh(t) {
+  setTimeout("location.reload(true);", t);
+}
+    </script>
 </head>
+<body onLoad="refresh(5000)">
+
+</body>
 </html>
